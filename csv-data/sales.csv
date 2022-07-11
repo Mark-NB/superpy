@@ -1,0 +1,41 @@
+id,product,quantity,buy_price,sale_price,profit,sale_date
+1,Pork - Ham Hocks - Smoked,53,3.86,14.45,10.59,2022-01-08
+2,Onions - Spanish,84,7.32,12.9,5.58,2022-04-08
+3,Mushroom - Morel Frozen,9,2.17,13.57,11.4,2021-12-13
+4,"Lamb - Shoulder, Boneless",66,1.87,16.38,14.51,2022-03-25
+5,Squash - Acorn,31,7.41,11.53,4.12,2021-08-30
+6,"Wine - White, Pelee Island",73,9.99,10.28,0.29,2021-11-18
+7,Sage - Fresh,71,9.21,11.51,2.3,2021-08-28
+8,Rosemary - Fresh,44,9.05,11.64,2.59,2021-10-23
+9,Scampi Tail,77,8.28,19.74,11.46,2022-06-16
+10,Cafe Royale,81,2.11,10.61,8.5,2022-04-02
+11,Beef - Sushi Flat Iron Steak,37,3.06,16.29,13.23,2021-12-10
+12,Rhubarb,5,2.06,16.63,14.57,2022-03-30
+13,"Lamb - Loin, Trimmed, Boneless",83,5.92,12.35,6.43,2021-07-07
+14,Veal - Provimi Inside,30,1.17,14.98,13.81,2022-03-27
+15,Cup Translucent 9 Oz,14,4.3,19.54,15.24,2021-11-23
+16,Dikon,11,9.0,18.33,9.33,2021-06-10
+17,Bread - Italian Corn Meal Poly,33,6.85,11.9,5.05,2021-09-21
+18,Napkin Colour,40,2.52,10.97,8.45,2022-01-09
+19,"Crab - Back Fin Meat, Canned",56,7.4,14.73,7.33,2021-08-24
+20,Vodka - Moskovskaya,47,7.02,14.38,7.36,2022-05-15
+21,Relish,61,6.87,12.07,5.2,2022-03-31
+22,Table Cloth 54x72 White,28,9.23,14.3,5.07,2021-08-18
+23,Cotton Wet Mop 16 Oz,52,2.25,15.14,12.89,2022-03-13
+24,Emulsifier,66,4.46,15.1,10.64,2021-11-14
+25,Parsnip,52,6.58,14.11,7.53,2021-07-30
+26,"Liqueur Banana, Ramazzotti",8,1.59,13.45,11.86,2022-04-13
+27,Lettuce Romaine Chopped,86,2.13,10.29,8.16,2021-07-20
+28,Beans - Fava Fresh,89,2.52,18.4,15.88,2021-07-08
+29,"Wine - White, Riesling, Semi - Dry",94,2.82,13.51,10.69,2022-02-05
+30,Steampan - Foil,47,1.43,15.07,13.64,2022-06-17
+31,"Basil - Primerba, Paste",82,5.74,17.34,11.6,2022-07-01
+32,Chef Hat 25cm,42,4.82,11.68,6.86,2022-01-07
+33,Foie Gras,100,7.97,17.61,9.64,2021-07-21
+34,"Beans - Turtle, Black, Dry",12,8.59,14.86,6.27,2022-02-10
+35,Towel Multifold,86,6.08,16.25,10.17,2022-01-16
+36,"Seedlings - Mix, Organic",55,8.6,19.83,11.23,2021-11-11
+37,Soup - Cream Of Broccoli,48,6.94,15.99,9.05,2022-01-12
+38,Orange Roughy 6/8 Oz,10,1.07,14.1,13.03,2022-01-18
+39,Southern Comfort,34,1.57,11.16,9.59,2021-08-31
+40,Bread - Bistro Sour,47,3.85,16.32,12.47,2021-09-13
