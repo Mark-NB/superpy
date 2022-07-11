@@ -2,7 +2,7 @@ from rich.console import Console
 from rich.table import Table
 
 
-class Reporter():
+class Reporter:
     def __init__(self):
         pass
 
@@ -23,7 +23,7 @@ class Reporter():
                 str(dic["quantity"]),
                 str(dic["buy_price"]),
                 str(dic["exp_date"]),
-                str(dic["buy_date"])
+                str(dic["buy_date"]),
             )
 
         console = Console()
@@ -41,7 +41,7 @@ class Reporter():
             str(buy_dict["product"]),
             str(buy_dict["quantity"]),
             str(buy_dict["buy_price"]),
-            str(buy_dict["exp_date"])
+            str(buy_dict["exp_date"]),
         )
 
         console = Console()
@@ -68,13 +68,34 @@ class Reporter():
 
         console = Console()
         console.print(table)
-        pass
 
     def loss_report(self, loss):
         pass
 
-    def profits_report(self, sales):
-        pass
+    def sales_report(self, sales):
+        table = Table(title="Sales/profit Report")
+
+        table.add_column("Id", style="orchid")
+        table.add_column("Product", style="bright_yellow")
+        table.add_column("Quantity", style="bright_cyan")
+        table.add_column("Buy price", style="bright_red")
+        table.add_column("Sale price", style="bright_green")
+        table.add_column("Total profit", style="deep_pink3")
+        table.add_column("Sale Date", style="orange3")
+
+        for dic in sales:
+            table.add_row(
+                str(dic["id"]),
+                str(dic["product"]),
+                str(dic["quantity"]),
+                str(dic["buy_price"]),
+                str(dic["sell_price"]),
+                str(dic["total_profit"]),
+                str(dic["sell_date"]),
+            )
+
+        console = Console()
+        console.print(table)
 
     def losses_report(self, losses):
         pass

@@ -46,6 +46,9 @@ def main(parsed_args):
         if report_type == "inventory":
             inventory = Inventory()
             reporter.inventory_report(inventory.show())
+        if report_type == "sales":
+            seller = Seller()
+            reporter.sales_report(seller.show())
 
     if functionality == "change_date":
         date_tools.set_todays_date(parsed_args.date[0])
