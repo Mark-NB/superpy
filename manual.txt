@@ -1,0 +1,96 @@
+SuperPy Manual.
+
+
+SuperPy is a stock and sales tool that uses simple command line input.
+Below you will find a brief technical overview and a user manual.
+
+
+Technical overview:
+
+SuperPy uses 3 csv files (inventory.csv, loss.csv, sales.csv) in which it stores the corresponding information.
+It also generates and updates a date.txt file in the app-date folder which holds a simple string with the 
+current SuperPy system date.
+SuperPy will automatically prompt the user to update the system date to today if the stored date is in the past.
+This automatic update will not take place if one of the date functionalities has been chosen (advance_date, set_date).
+Whenever the system date is updated SuperPy will automatically check if any of the products currently 
+in inventory have reached their expiration date and the user will be prompted if he wants to discard these items.
+SuperPy will then remove these items from stock and add them to the losses automatically.
+SuperPy is ran via the super.py file (example: C:\superpy\python super.py).
+
+
+User Manual:
+
+SuperPy works around 3 main functionalities (buy, sell, report) and 2 system management 
+functionalities(advance_date, set_date)
+These main functionalites will take extra options depending on the functionality and it's desired outcome.
+These extra options are listed here, but will be explained in more detail under each functionality below.
+-n  product name
+-i  id
+-a  amount
+-p  price
+-d  date
+-r  report type (sales, loss, inventory)
+-h  shows a basic usage help
+
+
+Functionalities:
+
+advance_date:
+This function will allow the user to change the system date relative from today's actual date.
+For example one could have the system date change to 5 days from now, or 2 days ago.
+This function can be used to force items into their expiration date discard, or to perform 
+buy/sell operations on a different date than today.
+options:
+-a  (mandatory) enter the amount of days we want the system date to change, this can be both 
+a positive or negative number.
+-example- set system date 5 days ahead:
+python super.py advance_date -a 5
+-example- set system date to 2 days ago:
+python super.py advance_date -a -2
+
+set_date:
+Like the advance_date function, this function will also change SuperPy's system date.
+The main difference being that a exact date will be provided to set the date.
+options:
+-d  (mandatory) enter the date we want the system to change to in a yyyy-mm-dd format.
+-example- set the system date to the 5th of january 2021:
+python super.py set_date -d 2021-01-05
+
+buy:
+The buy function allows the user to enter purchased goods which will then be added to the inventory.
+A simple buy report will be shown once the execution is done.
+options:
+-n  (mandatory) enter the name of the product.
+-a  (mandatory) enter the amount of said product being purchased.
+-p  (mandatory) enter the price at which 1 unit of the product is bought in a 2 decimal format.
+-d  (mandatory) enter the expiration of the product in a yyyy-mm-dd format.
+-example- Buying 50 apples at a price of 99 cents each with an expiration date at the 13th of august 2022.
+python super.py buy -n Apple -a 50 -p 0.99 -d 2022-08-13
+
+sell:
+The sell function allows the user to sell anything which is currently in stock in the inventory.
+Selling an item is done thorugh the item's inventory id, so opening a inventory report(explanation below) 
+is useualy done before makeing a sale.
+SuperPy will check to see if said item is currently sufficiently in stock, removes it from the inventory 
+and prints a sale report.
+options:
+-i  (mandatory) enter the id of the product.
+-a  (mandatory) enter the amount of said product being sold.
+-p  (mandatory) enter the price at which 1 unit of the product is sold in a 2 decimal format.
+-example- Selling 2 apples which have inventory id 12 at 2 euros each.
+python super.py sell -i 12 -a 2 -p 2.00
+
+report:
+This function allows the user to display several reports with a optional date parameter.
+The sales report will show all registered sales and a total profit column.
+The loss report, like the sales report, shows all the losses and a total loss column.
+The inventory report shows all items currently in stock, if a date is provided it will show items purchased 
+on said date.
+When no date is given the report will simply show all the available data.
+options:
+-r  (mandatory) enter the type of report (sales,loss,inventory)
+-d  (optional) enter the desired date for the report in a yyyy-mm-dd format.
+-example- show a report with all the inventory
+python super.py report -r inventory
+-example- show a report of all the sales done on the 25th of may 2022.
+python super.py report -r sales -d 2022-05-25

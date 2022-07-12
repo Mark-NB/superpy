@@ -1,5 +1,4 @@
 from pathlib import Path
-import os
 import csv
 
 
@@ -17,10 +16,16 @@ class Inventory():
             last_id = int(last_line["id"])
             return last_id
 
-    def show(self):
+    def show(self, report_date=""):
         with open(self.inventory_file, "r") as csv_inventory:
             dictreader = csv.DictReader(csv_inventory)
             list_of_dics = list(dictreader)
+            if report_date:
+                filtered_list = []
+                for dic in list_of_dics:
+                    if dic["buy_date"] == report_date:
+                        filtered_list.append(dic)
+                return filtered_list
             return list_of_dics
 
     def check(self, item_dict):

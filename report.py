@@ -9,12 +9,12 @@ class Reporter:
     def inventory_report(self, inventory):
         table = Table(title="Current Inventory")
 
-        table.add_column("Id", style="orchid")
+        table.add_column("Inv. id", style="orchid")
         table.add_column("Product", style="bright_yellow")
         table.add_column("Quantity", style="bright_cyan")
         table.add_column("Buy price", style="bright_red")
-        table.add_column("Experation Date", style="bright_blue")
-        table.add_column("Purchase Date", style="orange3")
+        table.add_column("Expiration date", style="bright_blue")
+        table.add_column("Purchase date", style="orange3")
 
         for dic in inventory:
             table.add_row(
@@ -35,7 +35,7 @@ class Reporter:
         table.add_column("Product", style="bright_yellow")
         table.add_column("Quantity", style="bright_cyan")
         table.add_column("Buy price", style="bright_red")
-        table.add_column("Experation Date", style="bright_blue")
+        table.add_column("Expiration date", style="bright_blue")
 
         table.add_row(
             str(buy_dict["product"]),
@@ -47,14 +47,36 @@ class Reporter:
         console = Console()
         console.print(table)
 
+    def loss_report(self, loss_list):
+        table = Table(title="Products discarded")
+
+        table.add_column("Loss id", style="orchid")
+        table.add_column("Product", style="bright_yellow")
+        table.add_column("Quantity", style="bright_cyan")
+        table.add_column("Buy price", style="bright_red")
+        table.add_column("Total loss", style="hot_pink3")
+        table.add_column("Loss date", style="orange3")
+        for dic in loss_list:
+            table.add_row(
+                str(dic["id"]),
+                str(dic["product"]),
+                str(dic["quantity"]),
+                str(dic["buy_price"]),
+                str(dic["total_loss"]),
+                str(dic["loss_date"]),
+            )
+
+        console = Console()
+        console.print(table)
+
     def sale_report(self, sale_dict):
         table = Table(title="Product sold")
 
         table.add_column("Product", style="bright_yellow")
         table.add_column("Quantity", style="bright_cyan")
         table.add_column("Sale price", style="bright_green")
-        table.add_column("Experation Date", style="bright_blue")
-        table.add_column("Sale Date", style="orange3")
+        table.add_column("Expiration Date", style="bright_blue")
+        table.add_column("Sale date", style="orange3")
         table.add_column("Total price", style="deep_pink3")
 
         table.add_row(
@@ -69,19 +91,39 @@ class Reporter:
         console = Console()
         console.print(table)
 
-    def loss_report(self, loss):
-        pass
+    def losses_report(self, loss):
+        table = Table(title="Loss Report")
+
+        table.add_column("Loss id", style="orchid")
+        table.add_column("Product", style="bright_yellow")
+        table.add_column("Quantity", style="bright_cyan")
+        table.add_column("Buy price", style="bright_red")
+        table.add_column("Total loss", style="hot_pink3")
+        table.add_column("Loss date", style="orange3")
+
+        for dic in loss:
+            table.add_row(
+                str(dic["id"]),
+                str(dic["product"]),
+                str(dic["quantity"]),
+                str(dic["buy_price"]),
+                str(dic["total_loss"]),
+                str(dic["loss_date"]),
+            )
+
+        console = Console()
+        console.print(table)
 
     def sales_report(self, sales):
         table = Table(title="Sales/profit Report")
 
-        table.add_column("Id", style="orchid")
+        table.add_column("Sale id", style="orchid")
         table.add_column("Product", style="bright_yellow")
         table.add_column("Quantity", style="bright_cyan")
         table.add_column("Buy price", style="bright_red")
         table.add_column("Sale price", style="bright_green")
         table.add_column("Total profit", style="deep_pink3")
-        table.add_column("Sale Date", style="orange3")
+        table.add_column("Sale date", style="orange3")
 
         for dic in sales:
             table.add_row(
@@ -96,6 +138,3 @@ class Reporter:
 
         console = Console()
         console.print(table)
-
-    def losses_report(self, losses):
-        pass
