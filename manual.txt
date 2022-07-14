@@ -15,14 +15,14 @@ This automatic update will not take place if one of the date functionalities has
 Whenever the system date is updated SuperPy will automatically check if any of the products currently 
 in inventory have reached their expiration date and the user will be prompted if he wants to discard these items.
 SuperPy will then remove these items from stock and add them to the losses automatically.
-SuperPy is ran via the super.py file (example: C:\superpy\python super.py).
+SuperPy is ran using the super.py file (example: C:\superpy\python super.py).
 
 
 User Manual:
 
 SuperPy works around 3 main functionalities (buy, sell, report) and 2 system management 
-functionalities(advance_date, set_date)
-These main functionalites will take extra options depending on the functionality and it's desired outcome.
+functionalities (advance_date, set_date)
+These main functionalites will take extra options depending on the functionality and its desired outcome.
 These extra options are listed here, but will be explained in more detail under each functionality below.
 -n  product name
 -i  id
@@ -37,7 +37,7 @@ Functionalities:
 
 advance_date:
 This function will allow the user to change the system date relative from today's actual date.
-For example one could have the system date change to 5 days from now, or 2 days ago.
+For example, the user could change the system date to 5 days from now, or 2 days ago.
 This function can be used to force items into their expiration date discard, or to perform 
 buy/sell operations on a different date than today.
 options:
@@ -69,8 +69,8 @@ python super.py buy -n Apple -a 50 -p 0.99 -d 2022-08-13
 
 sell:
 The sell function allows the user to sell anything which is currently in stock in the inventory.
-Selling an item is done thorugh the item's inventory id, so opening a inventory report(explanation below) 
-is useualy done before makeing a sale.
+Selling an item is done thorugh the item's inventory id, so opening a inventory report (explanation below) 
+is usually done before making a sale.
 SuperPy will check to see if said item is currently sufficiently in stock, removes it from the inventory 
 and prints a sale report.
 options:
@@ -81,7 +81,9 @@ options:
 python super.py sell -i 12 -a 2 -p 2.00
 
 report:
-This function allows the user to display several reports with a optional date parameter.
+This function allows the user to display several reports with an optional date parameter.
+When the report function is used the user will be promted to have the report be saved to a
+pds file aswell, which will be saved in the main superpy folder.
 The sales report will show all registered sales and a total profit column.
 The loss report, like the sales report, shows all the losses and a total loss column.
 The inventory report shows all items currently in stock, if a date is provided it will show items purchased 
