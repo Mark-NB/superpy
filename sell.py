@@ -46,7 +46,8 @@ class Sales:
                 filtered_total_profit = 0.00
                 for line in filtered_list:
                     if not line["total_profit"] == "total_profit":
-                        filtered_total_profit = filtered_total_profit + float(line["total_profit"])
+                        filtered_total_profit = filtered_total_profit + \
+                            float(line["total_profit"])
                 filtered_total_profit_dict = {
                     "id": "*****",
                     "product": "Total profit",
@@ -97,7 +98,7 @@ class Sales:
             "buy_price": "",
             "sell_price": sell_args.price[0],
             "exp_date": "",
-            "sell_date": datetools.get_todays_date(),
+            "sell_date": datetools.get_system_date(),
             "total_price": "",
         }
         sell_inv_check = inventory.check(sell_dict)
