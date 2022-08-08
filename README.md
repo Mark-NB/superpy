@@ -8,6 +8,6 @@ Als enkel -d word gebruikt word nog steeds enkel die dag getoond.
 
 2> In het sales rapport verschijnt nu ook de total revenue.
 
-3> Het nieuwe profit rapport toont de totale revenue, margin, loss, en total profit.
+3> Het nieuwe profit rapport toont de total revenue, margin, loss, en total profit.
 
 4> De aanpassingen verwerkt in de manual.txt
