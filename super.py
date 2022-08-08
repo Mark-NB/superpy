@@ -22,7 +22,8 @@ FUNCTIONALITIES = {"buy": "Buy product",
 REPORTS = {"inventory": "Inventory report",
            "buy": "Buy report",
            "sales": "Sales report",
-           "loss": "Loss report"
+           "loss": "Loss report",
+           "profit": "Profit report"
            }
 
 
@@ -65,19 +66,44 @@ def main(parsed_args):
         reporter = Reporter()
         report_type = parsed_args.report[0]
         report_date = ""
+        report_second_date = ""
         if parsed_args.date:
             report_date = parsed_args.date[0]
+        if parsed_args.second_date:
+            report_second_date = parsed_args.second_date[0]
+        if parsed_args.second_date and not parsed_args.date:
+            print(
+                f"\n**ERROR** Only a second date was provided (-t), please also provide a first date (-d). **ERROR**\n")
+            exit()
         if report_date:
             date_tools.check_date_validity(report_date)
+        if report_second_date:
+            date_tools.check_date_validity(report_second_date)
         if report_type == "inventory":
             inventory = Inventory()
-            reporter.inventory_report(inventory.show(report_date))
+            reporter.inventory_report(inventory.show(
+                report_date, report_second_date))
         if report_type == "sales":
             sales = Sales()
-            reporter.sales_report(sales.show(report_date))
+            reporter.sales_report(sales.show(report_date, report_second_date))
         if report_type == "loss":
             loss = Loss()
-            reporter.losses_report(loss.show(report_date))
+            reporter.losses_report(loss.show(report_date, report_second_date))
+        if report_type == "profit":
+            sales = Sales()
+            loss = Loss()
+            sales_show = sales.show(report_date, report_second_date)
+            total_revenue = sales_show[-1]["total_revenue"]
+            total_margin = sales_show[-1]["total_margin"]
+            loss_show = loss.show(report_date, report_second_date)
+            total_loss = loss_show[-1]["total_loss"]
+            profit_dict = {
+                "total_revenue": total_revenue,
+                "total_margin": total_margin,
+                "total_loss": total_loss,
+                "total_profit": round((total_margin - total_loss), 2)
+            }
+            reporter.profit_report(profit_dict)
 
     print(
         f"\n----- SuperPy system date: {date_tools.get_system_date()} -----\n")
@@ -129,12 +155,19 @@ if __name__ == "__main__":
         help="using buy: expiration date of item, using change_date: desired system date, using report: desired report date (yyyy-mm-dd format)"
     )
     parser.add_argument(
+        "-t",
+        type=str,
+        dest="second_date",
+        nargs=1,
+        help="using report: second date to get report over a period of time (yyyy-mm-dd format)"
+    )
+    parser.add_argument(
         "-r",
         type=str,
         dest="report",
         nargs=1,
         choices=REPORTS.keys(),
-        help="using report: type of report(sales/loss/inventory)"
+        help="using report: type of report(sales/loss/inventory/profit)"
     )
 
     parsed_args = parser.parse_args()

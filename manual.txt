@@ -29,6 +29,7 @@ These extra options are listed here, but will be explained in more detail under 
 -a  amount
 -p  price
 -d  date
+-t  till date
 -r  report type (sales, loss, inventory)
 -h  shows a basic usage help
 
@@ -88,11 +89,15 @@ The sales report will show all registered sales and a total profit column.
 The loss report, like the sales report, shows all the losses and a total loss column.
 The inventory report shows all items currently in stock, if a date is provided it will show items purchased 
 on said date.
+The profit report will show total revenue, margin, loss, and total profit.
 When no date is given the report will simply show all the available data.
 options:
--r  (mandatory) enter the type of report (sales,loss,inventory)
+-r  (mandatory) enter the type of report (sales,loss,inventory, profit)
 -d  (optional) enter the desired date for the report in a yyyy-mm-dd format.
+-t  (optional) enter a optional second date to show the report over a time period.
 -example- show a report with all the inventory
 python super.py report -r inventory
 -example- show a report of all the sales done on the 25th of may 2022.
 python super.py report -r sales -d 2022-05-25
+-example- show a report of all the losses from the 20th and 25th of may 2022.
+python super.py report -r loss -d 2022-05-20 -t 2022-05-25

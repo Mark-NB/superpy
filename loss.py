@@ -1,6 +1,7 @@
 from pathlib import Path
 import csv
 from date import DateTools
+from datetime import datetime
 from inventory import Inventory
 from report import Reporter
 
@@ -19,7 +20,7 @@ class Loss:
             last_id = int(last_line["id"])
             return last_id
 
-    def show(self, report_date=""):
+    def show(self, report_date="", report_second_date=""):
         with open(self.loss_file, "r") as csv_loss:
             dictreader = csv.DictReader(csv_loss)
             list_of_dics = list(dictreader)
@@ -37,7 +38,33 @@ class Loss:
                 "loss_date": "*****",
             }
             list_of_dics.append(total_loss_dict)
-            if report_date:
+            if report_second_date and report_date:
+                format = "%Y-%m-%d"
+                first_date = datetime.strptime(report_date, format)
+                second_date = datetime.strptime(report_second_date, format)
+                filtered_list = []
+                for dic in list_of_dics:
+                    if dic["loss_date"] == "*****":
+                        continue
+                    current_dic_date = datetime.strptime(dic["loss_date"], format)
+                    if current_dic_date <= second_date and current_dic_date >= first_date:
+                        filtered_list.append(dic)
+                filtered_total_loss = 0.00
+                for line in filtered_list:
+                    if not line["total_loss"] == "total_loss":
+                        filtered_total_loss = filtered_total_loss + \
+                            float(line["total_loss"])
+                filtered_total_loss_dict = {
+                    "id": "*****",
+                    "product": "Total loss",
+                    "quantity": "*****",
+                    "buy_price": "*****",
+                    "total_loss": round(filtered_total_loss, 2),
+                    "loss_date": "*****",
+                }
+                filtered_list.append(filtered_total_loss_dict)
+                return filtered_list
+            elif report_date:
                 filtered_list = []
                 for dic in list_of_dics:
                     if dic["loss_date"] == report_date:

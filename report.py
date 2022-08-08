@@ -128,14 +128,15 @@ class Reporter:
         console.print(table)
 
     def sales_report(self, sales):
-        table = Table(title="Sales/profit Report")
+        table = Table(title="Sales/margin Report")
 
         table.add_column("Sale id", style="orchid")
         table.add_column("Product", style="bright_yellow")
         table.add_column("Quantity", style="bright_cyan")
         table.add_column("Buy price", style="bright_red")
         table.add_column("Sale price", style="bright_green")
-        table.add_column("Total profit", style="deep_pink3")
+        table.add_column("Total revenue", style="green4")
+        table.add_column("Total margin", style="deep_pink3")
         table.add_column("Sale date", style="orange3")
 
         save_to_pdf = input(
@@ -150,9 +151,34 @@ class Reporter:
                 str(dic["quantity"]),
                 str(dic["buy_price"]),
                 str(dic["sell_price"]),
-                str(dic["total_profit"]),
+                str(dic["total_revenue"]),
+                str(dic["total_margin"]),
                 str(dic["sell_date"]),
             )
+
+        console = Console()
+        console.print(table)
+
+    def profit_report(self, profit_dict):
+        table = Table(title="Profits")
+
+        table.add_column("Total revenue", style="green4")
+        table.add_column("Total margin", style="deep_pink3")
+        table.add_column("Total loss", style="hot_pink3")
+        table.add_column("Total profit", style="sky_blue3")
+
+        table.add_row(
+            str(profit_dict["total_revenue"]),
+            str(profit_dict["total_margin"]),
+            str(profit_dict["total_loss"]),
+            str(profit_dict["total_profit"]),
+        )
+
+        save_to_pdf = input(
+            "\n----- Do you want this report to also be saved to PDF? (yes/no) -----\n")
+        if save_to_pdf == "yes":
+            profit_list = [profit_dict]
+            self.make_pdf_report(profit_list)
 
         console = Console()
         console.print(table)
